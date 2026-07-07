@@ -4,6 +4,14 @@ class Solution {
      for(int i=0;i<matchsticks.length;i++){
         sum+=matchsticks[i];
      }
+     
+        Arrays.sort(matchsticks);
+        
+        for (int i = 0, j = matchsticks.length - 1; i < j; i++, j--) {
+            int temp = matchsticks[i];
+            matchsticks[i] = matchsticks[j];
+            matchsticks[j] = temp;
+        }
 
      if(sum%4!=0) return false;
     boolean [] visited=new boolean[matchsticks.length];  
