@@ -1,17 +1,12 @@
 class Solution {
     public int reverse(int x) {
-        int max=Integer.MAX_VALUE;
-        int min=Integer.MIN_VALUE;
-        
-        int result=0;
-      while(x>0||x<0){
-        int digit=x%10;
-        x=x/10;
-        if(result>max/10||(result==max/10&&digit>max%10)) return 0;
-         if(result<min/10||(result==min/10&&digit<min%10)) return 0;
-      result=result*10+digit;
-      }
-      return result;
-
+        long sum=0;
+        while(x!=0){
+            int digit=x%10;
+            x=x/10;
+            sum=sum*10+digit;
+        }
+        if(sum>Integer.MAX_VALUE||sum<Integer.MIN_VALUE) return 0;
+        return (int)sum;
     }
 }
