@@ -1,10 +1,12 @@
 class Solution {
     public int calPoints(String[] operations) {
         Stack<Integer> st = new Stack<>();
+            int sum=0;
         for (int i = 0; i < operations.length; i++) {
             String s = operations[i];
             if (s.charAt(0)=='C') {
-                st.pop();
+               sum=sum-st.pop();
+                continue;
             } else if (st.size() >= 2 && s.charAt(0) == '+') {
                 int firstval = st.pop();
                 int secondval = st.pop();
@@ -19,16 +21,15 @@ class Solution {
                 st.push(st.peek()*2);
             }
             else {
-                System.out.println(s.charAt(0)-'0');
+                
                     st.push(Integer.parseInt(operations[i]));
                 
             }
+            sum=sum+st.peek();
         }
 
-        int sum=0;
-        while(!st.isEmpty()){
-            sum=sum+st.pop();
-        }
+    
+        
         return sum;
     }
 }
